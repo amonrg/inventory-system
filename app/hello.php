@@ -3,8 +3,8 @@
     $password = $env["POSTGRES_PASSWORD"];
     $username = $env["POSTGRES_USERNAME"];
     $db = $env["POSTGRES_DB"];
-    $host = $env["POSTGRES_HOST"]
-    $dbconn = pg_connect("host=" . $host . "dbname=" . $db . "user=" . $username . "password=" . $password) or die('Could not connect: ' . pg_last_error());
+    $host = $env["POSTGRES_HOST"];
+    $dbconn = pg_connect("host=" . $host . " dbname=" . $db . " user=" . $username . " password=" . $password) or die('Could not connect: ' . pg_last_error());
 
     echo "Inventory System" . "<br>";
 
@@ -15,5 +15,5 @@
         echo "Database response: " . $version['client'] . "<br>";
     }
 
-    pg_close($dbconn)
+    pg_close($dbconn);
 ?>
