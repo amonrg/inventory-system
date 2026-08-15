@@ -5,12 +5,21 @@ services:
     build:
       context: .
       dockerfile: app/Dockerfile
-    ports:
-      - "${APP_PORT}:8000"
     depends_on:
       postgres:
         condition: service_healthy
     networks:
+      - default
+  
+  proxy:
+    build: nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - default
       - monitoring
 
 networks:
